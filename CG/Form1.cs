@@ -33,14 +33,22 @@ namespace CG
         {
             double angle = 0;
 
-            while (angle < 2 * Math.PI)
+            while (angle < Math.PI / 2)
             {
-                int x = (int)(w * Math.Cos(angle)) + p1.X;
-                int y = (int)(h * Math.Sin(angle)) - p1.Y + bitmapYSize;
-                bitmap.SetPixel(x, y, color);
+                int x = (int)(w * Math.Cos(angle));
+                int y = (int)(h * Math.Sin(angle));
+                drawPixels(bitmap, p1.X, p1.Y, x, y, color);
                 angle += Math.PI / 720.0;
             }
 ;
+        }
+
+        private void drawPixels(Bitmap bitmap, int x0, int y0, int x, int y, Color color) 
+        {
+            bitmap.SetPixel(x0 + x, bitmapYSize - y0 + y, color);
+            bitmap.SetPixel(x0 - x, bitmapYSize - y0 - y, color);
+            bitmap.SetPixel(x0 + x, bitmapYSize - y0 - y, color);
+            bitmap.SetPixel(x0 - x, bitmapYSize - y0 + y, color );
         }
     }
 }
