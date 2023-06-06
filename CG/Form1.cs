@@ -23,7 +23,7 @@ namespace CG
         private void Form1_Load(object sender, EventArgs e)
         {
             Bitmap bitmap = new Bitmap(bitmapXSize, bitmapYSize);
-            drawEllipse(new Point(200, 250), 70, 120, bitmap, Color.Magenta);
+            drawEllipse(new Point(200, 350), 70, 120, bitmap, Color.Magenta);
             pictureBox1.Image = bitmap;
         }
 
@@ -62,7 +62,7 @@ namespace CG
                 }
             }
 
-            delta = h * h * (2 * x + 1) * (2 * x + 1) + 4 * w * w * (y + 1) * (y + 1) - 4 * w * h;
+            delta = h * h * (2 * x + 1) * (2 * x + 1) + 4 * w * w * (y + 1) * (y + 1) - 4 * w * w * h * h;
             while (y + 1 != 0)
             {
                 drawPixels(bitmap, p1.X, p1.Y, x, y, color);
